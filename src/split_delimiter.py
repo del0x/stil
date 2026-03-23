@@ -1,4 +1,5 @@
 from src.textnode import TextNode, TextType
+import re
 
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
@@ -42,3 +43,10 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
         if stack:
             raise ValueError("Invalid Markdown: unclosed delimiter")
     return new_nodes
+
+
+def extract_markdown_images(text):
+    return re.findall(r"!\[([^\[\]]*)\]\(([^\(\)]*)\)", text)
+
+def extract_markdown_links(text):
+    return re.findall(r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)", text)
