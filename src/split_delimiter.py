@@ -2,6 +2,22 @@ from src.textnode import TextNode, TextType
 import re
 
 
+def markdown_to_blocks(markdown):
+    paragraphs = markdown.split("\n\n")
+    cleaned = []
+
+    for p in paragraphs:
+        p = p.strip()
+        if not p:
+            continue
+
+        lines = [line.lstrip() for line in p.split('\n')]
+        cleaned.append("\n".join(lines))
+    return cleaned
+    
+    
+
+
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     new_nodes = []
 
