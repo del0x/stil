@@ -1,4 +1,5 @@
 from src.textnode import TextNode, TextType
+from src.blocktype import block_to_block_type, BlockType
 import re
 
 
@@ -16,8 +17,6 @@ def markdown_to_blocks(markdown):
     return cleaned
     
     
-
-
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     new_nodes = []
 
